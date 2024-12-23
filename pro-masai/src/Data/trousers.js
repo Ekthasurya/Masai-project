@@ -1,0 +1,87 @@
+export const trousers = [
+  {
+    id:1,
+    title:"ABC Jogger Regular",
+    img:"https://images.lululemon.com/is/image/lululemon/LM5AJLS_048432_2?wid=72&op_usm=0.8,1,10,0&fmt=webp&qlt=80,1&fit=constrain,0&op_sharpen=0&resMode=sharp2&iccEmbed=0&printRes=72",
+    description:"From sport mode to chill, our ABC joggers are here for whatever downtime means to you.",
+    price:"128",  
+  },
+  {
+      id:2,
+      title:"ABC Classic-Fit 5 Pocket Pant 30 L Warpstreme",
+      img:"https://images.lululemon.com/is/image/lululemon/LM5AQHS_026865_2?wid=72&op_usm=0.8,1,10,0&fmt=webp&qlt=80,1&fit=constrain,0&op_sharpen=0&resMode=sharp2&iccEmbed=0&printRes=72",
+      description:"Our stretchy, wrinkle-resistant Warpstreme™ fabric keeps its shape all day long.",
+      price:"145",  
+    },
+    {
+      id:3,
+      title:"ABC Relaxed-Fit 5 Pocket Pant 34 L Warpstreme",
+      img:"https://images.lululemon.com/is/image/lululemon/LM5AO3S_031382_2?wid=72&op_usm=0.8,1,10,0&fmt=webp&qlt=80,1&fit=constrain,0&op_sharpen=0&resMode=sharp2&iccEmbed=0&printRes=72",
+      description:"Our stretchy, wrinkle-resistant Warpstreme™ fabric keeps its shape all day long.",
+      price:"79",  
+    },
+    {
+      id:4,
+      title:"ABC Classic-Fit 5 Pocket Pant 32 LWarpstreme",
+      img:"https://images.lululemon.com/is/image/lululemon/LM5AO1S_033123_2?wid=72&op_usm=0.8,1,10,0&fmt=webp&qlt=80,1&fit=constrain,0&op_sharpen=0&resMode=sharp2&iccEmbed=0&printRes=72",
+      description:"Our stretchy, wrinkle-resistant Warpstreme™ fabric keeps its shape all day long.",
+      price:"125",  
+    },
+    {
+      id:5,
+      title:"ABC Classic-Fit 5 Pocket Pant 34 LWarpstreme",
+      img:"https://images.lululemon.com/is/image/lululemon/LM5AQ9S_026865_2?wid=72&op_usm=0.8,1,10,0&fmt=webp&qlt=80,1&fit=constrain,0&op_sharpen=0&resMode=sharp2&iccEmbed=0&printRes=72",
+      description:"Our stretchy, wrinkle-resistant Warpstreme™ fabric keeps its shape all day long.",
+      price:"79",  
+    },
+    {
+      id:6,
+      title:"ABC Slim-Fit 5 Pocket Pant 30 L Warpstreme",
+      img:"https://images.lululemon.com/is/image/lululemon/bDAM_PDP_Assets/LM5AQRS_poster.jpg?wid=72&op_usm=0.8,1,10,0&fmt=webp&qlt=80,1&fit=constrain,0&op_sharpen=0&resMode=sharp2&iccEmbed=0&printRes=72",
+      description:"Our stretchy, wrinkle-resistant Warpstreme™ fabric keeps its shape all day long.",
+      price:"98",  
+    },
+    {
+      id:7,
+      title:"Evergreen Jogger",
+      img:"https://images.lululemon.com/is/image/lululemon/LM5AN6S_0001_1?$product_tile$&wid=320&op_usm=0.8,1,10,0&fmt=webp&qlt=80,1&fit=constrain,0&op_sharpen=0&resMode=sharp2&iccEmbed=0&printRes=72",
+      description:"From sport mode to chill, our ABC joggers are here for whatever downtime means to you.",
+      price:"108",  
+    },
+    {
+      id:8,
+      title:"Intent Jogger Shorter",
+      img:"https://images.lululemon.com/is/image/lululemon/LM5AKWS_0001_1?$product_tile$&wid=320&op_usm=0.8,1,10,0&fmt=webp&qlt=80,1&fit=constrain,0&op_sharpen=0&resMode=sharp2&iccEmbed=0&printRes=72",
+      description:"From sport mode to chill, our ABC joggers are here for whatever downtime means to you.",
+      price:"163",  
+    },
+    {
+      id:9,
+      title:"ABC Jogger Tall",
+      img:"https://images.lululemon.com/is/image/lululemon/LM5AQLT_029283_1?$product_tile$&wid=320&op_usm=0.8,1,10,0&fmt=webp&qlt=80,1&fit=constrain,0&op_sharpen=0&resMode=sharp2&iccEmbed=0&printRes=72",
+      description:"From sport mode to chill, our ABC joggers are here for whatever downtime means to you.",
+      price:"178",  
+    },
+    {
+      id:10,
+      title:"Surge Jogger Regular",
+      img:"https://images.lululemon.com/is/image/lululemon/LM5AKHS_030700_1?$product_tile$&wid=320&op_usm=0.8,1,10,0&fmt=webp&qlt=80,1&fit=constrain,0&op_sharpen=0&resMode=sharp2&iccEmbed=0&printRes=72",
+      description:"From sport mode to chill, our ABC joggers are here for whatever downtime means to you.",
+      price:"98",  
+    },
+    {
+      id:11,
+      title:"License to Train Jogger Regular",
+      img:"https://images.lululemon.com/is/image/lululemon/LM5AI3S_030298_1?$product_tile$&wid=320&op_usm=0.8,1,10,0&fmt=webp&qlt=80,1&fit=constrain,0&op_sharpen=0&resMode=sharp2&iccEmbed=0&printRes=72",
+      description:"From sport mode to chill, our ABC joggers are here for whatever downtime means to you.",
+      price:"147",  
+    },
+    {
+      id:12,
+      title:"Smooth Spacer Jogger Regular",
+      img:"https://images.lululemon.com/is/image/lululemon/LM5B78S_032493_1?$product_tile$&wid=320&op_usm=0.8,1,10,0&fmt=webp&qlt=80,1&fit=constrain,0&op_sharpen=0&resMode=sharp2&iccEmbed=0&printRes=72",
+      description:"From sport mode to chill, our ABC joggers are here for whatever downtime means to you.",
+      price:"165",  
+    }
+
+]

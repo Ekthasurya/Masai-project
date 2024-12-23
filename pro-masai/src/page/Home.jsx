@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <div>
       <Box height={500} paddingTop={20} backgroundImage={"https://c1.wallpaperflare.com/preview/266/464/958/lululemon-adventure-travel-san-antonio.jpg"}>
-      <Box  border="1px solid" w={230} backgroundColor="white" paddingTop={10} paddingBottom={10} paddingRight={12} paddingLeft={8}    >
+      <Box   w={230} backgroundColor="white" paddingTop={10} paddingBottom={10} paddingRight={12} paddingLeft={8}    >
         <Flex flexDirection="column" gap={6} >
           <Box fontWeight={500}>lululemon</Box>
           <Flex flexDirection="column" gap={3}>
@@ -17,7 +17,7 @@ const Home = () => {
           <Link to='/men'><Box>Men's What's New</Box></Link>
           <Link to='/women/allwomen'><Box>All Women's</Box></Link>
           <Link to='/men/allmen'><Box>All Men's</Box></Link>
-          <Link path='/accessories'><Box>All Accessories</Box></Link>
+          <Link to='/accessories'><Box>All Accessories</Box></Link>
           </Flex>
         </Flex>
       </Box>

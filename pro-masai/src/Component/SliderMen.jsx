@@ -1,58 +1,73 @@
-import { Box, Flex } from '@chakra-ui/react'
-import React, { useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Box, Button, Flex } from '@chakra-ui/react';
+import React, { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { men } from '../Data/men';
+import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 
- const SliderMen = () => {
-    const [data, setData] = useState([])
-useEffect(() => {
-    fetch('http://localhost:5050/men')
-      .then((e) => e.json())
-      .then((e) => setData(e))
-  })
+const SliderMen = () => {
+  const data = men;
+  const sliderRef = useRef(null);  // Reference to the Slider component
 
-
-
-    const settings = {
-      dots: true,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 4,
-      slidesToScroll: 3
-    }
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 3,
+  };
 
   return (
-    <div>
-        <div>
-        <Slider
-        {...settings}
-      >
-        {data.map((ele) => (
-        <div>
-          <Box w={350} p={6} key={ele.id}>
-            <Link to={`/men/${ele.id}`}>
-              <Box>
-                <img
-                  style={{ width: '300px', alignItems: 'center' }}
-                  src={ele.image}
-                  alt="men"
-                />
-              </Box>
-              <Flex justifyContent="space-between">
-                <Box fontWeight={500}>{ele.name}</Box> <Box>{ele.price}</Box>
-              </Flex>
-            </Link>
-          </Box>
-        </div>
-      ))}
-       </Slider>
-       
-        </div>
-    </div>
-  )
-}
+    <Box position="relative">
+      {/* Slider Component */}
+      <Slider {...settings} ref={sliderRef}>
+        {data.map((item) => (
+          <div key={item.id}>
+            <Box w={350} p={6}>
+              <Link to={`/men/${item.id}`}>
+                <Box>
+                  <img
+                    style={{ width: '300px', alignItems: 'center' }}
+                    src={item.img}
+                    alt="men"
+                  />
+                </Box>
+                <Flex justifyContent="space-between">
+                  <Box fontWeight={500}>{item.title}</Box>
+                  <Box>{item.price}</Box>
+                </Flex>
+              </Link>
+            </Box>
+          </div>
+        ))}
+      </Slider>
 
-export default SliderMen
+      {/* Custom Previous and Next Buttons positioned at the sides */}
+      <Box position="absolute" top="50%" left="6" transform="translateY(-50%)">
+        <Button
+          onClick={() => sliderRef.current.slickPrev()}
+          backgroundColor="gray.500"
+          color="white"
+          p={3}
+        >
+          <AiOutlineLeft />
+        </Button>
+      </Box>
 
+      <Box position="absolute" top="50%" right="4" transform="translateY(-50%)">
+        <Button
+          onClick={() => sliderRef.current.slickNext()}
+          backgroundColor="gray.500"
+          color="white"
+          p={3}
+        >
+          <AiOutlineRight />
+        </Button>
+      </Box>
+    </Box>
+  );
+};
+
+export default SliderMen;

@@ -77,9 +77,9 @@ const Navbar = () => {
             <Box>
               <BsHeart size={25} />
             </Box>
-            <Box>
+           <Link to='/cart'> <Box>
               <IoBagHandleOutline size={25} />
-            </Box>
+            </Box></Link>
           </Flex>
         </Flex>
       </Box>

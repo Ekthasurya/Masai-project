@@ -1,32 +1,71 @@
-import { Box, Button, Flex ,Text} from '@chakra-ui/react';
-import React, { useEffect, useState } from 'react'
+import { Box, Button, Flex, Text } from '@chakra-ui/react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
+import { sneakers } from '../Data/sneakers';
 
 const ShoesData = () => {
-    const [data1,setData1]=useState({});
-    const{Id}=useParams()
+  const { Id } = useParams();
+  const product = sneakers.find((item) => item.id === parseInt(Id));
 
-    useEffect(()=>{
-        fetch(`http://localhost:5050/accessories/${Id}`)
-        .then(e=>e.json())
-        .then(e=>setData1(e))
-    })
+  // Add product to localStorage
+  const addToCart = () => {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const isProductInCart = cart.find((item) => item.id === product.id);
+
+    if (isProductInCart) {
+      alert('Product already in cart!');
+    } else {
+      cart.push(product);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert('Product added to cart!');
+    }
+  };
+
+  if (!product) {
+    return (
+      <Box textAlign="center" mt={8}>
+        <Text fontSize="2xl" color="red.500">
+          Product not found!
+        </Text>
+      </Box>
+    );
+  }
+
   return (
-    <div>
-      <Flex justifyContent="space-evenly">
-      <Box w={400} border="2px solid"  ><img src={data1?.image_url} alt="" /></Box>
-        <Box>
-        <Box marginTop={8} fontSize={35} fontWeight={500} textAlign="center">{data1?.name}</Box>
-        <Flex gap={5} marginTop={8} fontSize={35} fontWeight={500} textAlign="center"> <Text color="#c8102e">Price</Text> : {data1?.price}</Flex>
-        <Flex gap={5} marginTop={8} fontSize={35} fontWeight={500} textAlign="center"> <Text color="#c8102e">Category</Text>: {data1?.category}</Flex>
-        <Box textAlign="center" marginTop={12}><Button p={2} width={400} size='lg' backgroundColor="#c8102e" color="white" border="1px solid black">ADD TO BAG</Button></Box>
-           
-        </Box>
-      
-      </Flex>
-         
-    </div>
-  )
-}
+    <Flex justifyContent="space-evenly" mt={8}>
+      <Box w={400} border="2px solid">
+        <img src={product.img} alt={product.title} />
+      </Box>
 
-export default ShoesData
+      <Box textAlign="center">
+        <Box mt={8} fontSize={35} fontWeight={500} textAlign="center">
+          {product.title}
+        </Box>
+        <Flex gap={5} marginLeft={300} mt={8} fontSize={35} fontWeight={500}>
+          <Text color="#c8102e">Price:</Text> ${product.price}
+        </Flex>
+        <Box textAlign="center" mt={12}>
+          <Button
+            p={2}
+            w={400}
+            size="lg"
+            backgroundColor="#c8102e"
+            color="white"
+            border="1px solid black"
+            onClick={addToCart}
+          >
+            ADD TO BAG
+          </Button>
+        </Box>
+       
+
+        <Box marginTop={20}>
+          <Text fontSize={23} fontWeight={500}>Why we make this?</Text>
+          <Text>{product?.description}</Text>
+        </Box>
+      </Box>
+    </Flex>
+  );
+};
+
+export default ShoesData;

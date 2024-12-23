@@ -2,6 +2,7 @@ import { Box, Flex, Text } from '@chakra-ui/react'
 import React from 'react'
 import MenProduct from '../Component/MenProduct'
 import ShoesProduct from '../Component/ShoesProduct'
+import { Link } from 'react-router-dom'
 
 const Shoes = () => {
   return (
@@ -9,14 +10,19 @@ const Shoes = () => {
       <Flex>
 
 <Box h="auto" w={300} >
-  <Box fontSize={20} fontWeight={500} p={10} >Shoes</Box>
+  <Box fontSize={25} fontWeight={900} p={5} >Shoes</Box>
   <hr />
   <Box p={10}>
-  <Text fontSize={20} fontWeight={500}>Catagory</Text>
-  <Text>Slides</Text>
-  <Text>Sneakers</Text>
-  <Text>Cross Training Shoes</Text>
-  <Text>Trail Training Shoes</Text>
+  <Text fontSize={20} fontWeight={600} m={2}>Catagory</Text>
+  <hr />
+  <Link to='/slides'><Text m={2}>Slides</Text></Link>
+  <hr />
+ <Link to='/sneakers'><Text m={2}>Sneakers</Text></Link>
+  <hr />
+  <Link to='/sneakers'><Text m={2}>Cross Training Shoes</Text></Link>
+    <hr />
+    <Link to='/sneakers'><Text m={2}>Trail Training Shoes</Text></Link>
+  <hr />
   </Box>
   
 </Box>
@@ -24,7 +30,6 @@ const Shoes = () => {
   <Box >
     <img style={{width:"1030px", height:"300px"}} src="https://th.bing.com/th/id/OIP.24cSqpCRAwjBxKAs5lF4mgHaE8?w=342&h=186&c=7&r=0&o=5&pid=1.7" alt="" />
   </Box>
-  <Text p={5} textDecoration="underline" textDecorationColor="gray">All Items</Text>
   <ShoesProduct/>
 </Box>
 </Flex>

@@ -1,35 +1,50 @@
-import { Box, Flex, Grid, GridItem, grid } from '@chakra-ui/react'
+import { Box, Button, Flex, Grid, GridItem, grid } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { sneakers } from '../Data/sneakers'
 
 const ShoesProduct = () => {
-  const [data, setData] = useState([])
-useEffect(() => {
-    fetch('http://localhost:5050/shoes')
-      .then((e) => e.json())
-      .then((e) => setData(e))
-  })
+  const [data, setData] = useState(sneakers);
+    const [isSortedAsc, setIsSortedAsc] = useState(true);
+  
+    const handleSort = () => {
+      const sortedData = [...data].sort((a, b) =>
+        isSortedAsc ? a.price - b.price : b.price - a.price
+      );
+      setData(sortedData);
+      setIsSortedAsc(!isSortedAsc); // Toggle sort order
+    };
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)' }}>
-      {data.map((ele) => (
+    <>
+    <Button
+        onClick={handleSort}
+        mb={4}
+        colorScheme="blue"
+        margin={5}
+      >
+        Sort by Price ({isSortedAsc ? 'Ascending' : 'Descending'})
+      </Button>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)',gap:"5px" }}>
+      {data.map((item) => (
         <div>
-          <Box w={350} p={6} key={ele.id}>
-            <Link to={`/shoes/${ele.id}`}>
+          <Box w={350} p={6} bg="#fff" border="1px solid rgba(0, 0, 0, 0.102)" key={item.id}>
+            <Link to={`/shoes/${item.id}`}>
               <Box>
                 <img
                   style={{ width: '300px', alignItems: 'center' }}
-                  src={ele.image_url}
+                  src={item.img}
                   alt="men"
                 />
               </Box>
               <Flex justifyContent="space-between">
-                <Box fontWeight={500}>{ele.name}</Box> <Box>{ele.price}</Box>
+                <Box fontWeight={600}>{item.title}</Box> <Box>{item.price}$</Box>
               </Flex>
             </Link>
           </Box>
         </div>
       ))}
     </div>
+    </>
   )
 }
 

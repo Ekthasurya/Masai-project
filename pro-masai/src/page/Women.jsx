@@ -8,15 +8,15 @@ const Women = () => {
   return (
     <div>
        <Box height={500} paddingTop={20} backgroundImage={"https://images.lululemon.com/is/image/lululemon/NA_Jun24_Wk3_W_Skirts_Ecomm_3_1_D?wid=1280&op_usm=0.5,2,10,0&fmt=webp&qlt=80,1&fit=constrain,0&op_sharpen=0&resMode=sharp2&iccEmbed=0&printRes=72"}>
-      <Box  border="1px solid" w={230} backgroundColor="white" paddingTop={10} paddingBottom={10} paddingRight={12} paddingLeft={8}    >
+      <Box   w={230} backgroundColor="white" paddingTop={10} paddingBottom={10} paddingRight={12} paddingLeft={8}    >
         <Flex flexDirection="column" gap={6} >
           <Box fontWeight={500}>lululemon</Box>
           <Flex flexDirection="column" gap={3}>
-        <Link to='/women/allwomen' >  <Box>Shorts</Box> </Link>
-        <Link to='/women/allwomen'>  <Box>Skirts</Box> </Link>
-        <Link to='/women/allwomen'>  <Box>Tank tops</Box></Link>
-        <Link to='/women/allwomen'> <Box>Dresses</Box></Link>
-        <Link to='/women/allwomen'>  <Box>Leggings</Box></Link>
+        <Link to='/womenshorts' >  <Box>Shorts</Box> </Link>
+        <Link to='/skirts'>  <Box>Skirts</Box> </Link>
+        <Link to='/tanktops'>  <Box>Tank tops</Box></Link>
+        <Link to='/dresses'> <Box>Dresses</Box></Link>
+        <Link to='/leggings'>  <Box>Leggings</Box></Link>
           </Flex>
         </Flex>
       </Box>
