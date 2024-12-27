@@ -3,7 +3,6 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { menShorts } from '../Data/menShorts';
 
-
 const MenShortsSingle = () => {
   const { Id } = useParams();
   const product = menShorts.find((item) => item.id === parseInt(Id));
@@ -33,22 +32,53 @@ const MenShortsSingle = () => {
   }
 
   return (
-    <Flex justifyContent="space-evenly" mt={8}>
-      <Box w={400} border="2px solid">
-        <img src={product.img} alt={product.title} />
+    <Flex
+      direction={{ base: 'column', md: 'row' }}  // Stacked on mobile, horizontal on larger screens
+      justifyContent="center"
+      align="center"
+      mt={8}
+      p={4}
+    >
+      {/* Product Image */}
+      <Box
+        w={{ base: '100%', md: '400px' }}  // Full width on mobile, fixed width on medium screens
+        mb={{ base: 4, md: 0 }}  // Adds margin bottom only on mobile
+        border="2px solid"
+        borderRadius="md"
+        overflow="hidden"
+        shadow="md"
+      >
+        <img
+          src={product.img}
+          alt={product.title}
+          style={{
+            width: '100%',
+            height: 'auto',
+            objectFit: 'cover',
+          }}
+        />
       </Box>
 
-      <Box textAlign="center">
-        <Box mt={8} fontSize={35} fontWeight={500} textAlign="center">
+      {/* Product Details */}
+      <Box textAlign="center" maxW="500px" ml={{ md: 8 }}>
+        <Box mt={8} fontSize={{ base: 'xl', md: '3xl' }} fontWeight={500}>
           {product.title}
         </Box>
-        <Flex gap={5} marginLeft={300} mt={8} fontSize={35} fontWeight={500}>
+
+        <Flex
+          gap={5}
+          justifyContent="center"
+          mt={8}
+          fontSize={{ base: 'lg', md: '2xl' }}
+          fontWeight={500}
+        >
           <Text color="#c8102e">Price:</Text> ${product.price}
         </Flex>
+
         <Box textAlign="center" mt={12}>
           <Button
             p={2}
-            w={400}
+            w={{ base: 'full', md: '400px' }}  // Full width on mobile, fixed width on larger screens
             size="lg"
             backgroundColor="#c8102e"
             color="white"
@@ -58,11 +88,13 @@ const MenShortsSingle = () => {
             ADD TO BAG
           </Button>
         </Box>
-       
 
-        <Box marginTop={20}>
-          <Text fontSize={23} fontWeight={500}>Why we make this?</Text>
-          <Text>{product?.description}</Text>
+        {/* Product Description */}
+        <Box mt={20}>
+          <Text fontSize={{ base: 'md', md: 'lg' }} fontWeight={500}>
+            Why we make this?
+          </Text>
+          <Text fontSize={{ base: 'sm', md: 'md' }}>{product?.description}</Text>
         </Box>
       </Box>
     </Flex>

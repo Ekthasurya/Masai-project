@@ -37,7 +37,7 @@ const PaymentPage = () => {
   };
 
   return (
-    <Box p={8}>
+    <Box p={{ base: 4, md: 8 }} maxW="600px" mx="auto">
       <Text fontSize="2xl" fontWeight="bold" mb={4}>
         Payment Details
       </Text>
@@ -47,24 +47,30 @@ const PaymentPage = () => {
           placeholder="1234 5678 9123 4567"
           value={cardNumber}
           onChange={(e) => setCardNumber(e.target.value)}
+          mb={4}
+          size="lg"
         />
       </Box>
-      <Flex mb={4} gap={4}>
-        <Box>
+      <Flex direction={{ base: 'column', md: 'row' }} mb={4} gap={4}>
+        <Box flex="1">
           <Text>Expiry Date:</Text>
           <Input
             placeholder="MM/YY"
             value={expiryDate}
             onChange={(e) => setExpiryDate(e.target.value)}
+            mb={4}
+            size="lg"
           />
         </Box>
-        <Box>
+        <Box flex="1">
           <Text>CVV:</Text>
           <Input
             placeholder="123"
             type="password"
             value={cvv}
             onChange={(e) => setCvv(e.target.value)}
+            mb={4}
+            size="lg"
           />
         </Box>
       </Flex>
@@ -72,6 +78,7 @@ const PaymentPage = () => {
         colorScheme="teal"
         size="lg"
         onClick={handlePayment}
+        w="full"
       >
         Pay Now
       </Button>

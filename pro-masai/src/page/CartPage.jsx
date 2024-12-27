@@ -50,7 +50,7 @@ const CartPage = () => {
   if (cart.length === 0) {
     return (
       <Box textAlign="center" mt={8}>
-        <Text fontSize="2xl" color="gray.500">
+        <Text fontSize={{ base: 'xl', md: '2xl' }} color="gray.500">
           Your cart is empty!
         </Text>
       </Box>
@@ -58,12 +58,14 @@ const CartPage = () => {
   }
 
   return (
-    <Box mt={8}>
+    <Box mt={8} padding={{ base: 4, md: 8 }}>
       {/* Display Total Items and Total Amount */}
       <Box mb={8} textAlign="center">
-        <Text fontSize="2xl" fontWeight="bold">Total Items: {totalItems}</Text>
-        <Text fontSize="2xl" fontWeight="bold" color="green.500">
-          Total Amount: ${totalAmount}
+        <Text fontSize={{ base: 'lg', md: '2xl' }} fontWeight="bold">
+          Total Items: {totalItems}
+        </Text>
+        <Text fontSize={{ base: 'lg', md: '2xl' }} fontWeight="bold" color="green.500">
+          Total Amount: ${totalAmount.toFixed(2)}
         </Text>
       </Box>
 
@@ -76,17 +78,29 @@ const CartPage = () => {
           mb={4}
           justifyContent="space-between"
           alignItems="center"
+          direction={{ base: 'column', md: 'row' }}
         >
-          <Box>
-            <img src={item.img} alt={item.title} width={100} />
+          <Box mb={{ base: 4, md: 0 }} flexShrink={0}>
+            <img
+              src={item.img}
+              alt={item.title}
+              style={{
+                maxWidth: '150px', // Adjust the max width for large screens
+                width: '100%',     // Allow the image to scale down on smaller screens
+                height: 'auto',    // Maintain aspect ratio
+              }}
+            />
           </Box>
-          <Box>
-            <Text fontSize="xl">{item.title}</Text>
-            <Text fontSize="lg">${item.price}</Text>
+          <Box flex="1" textAlign={{ base: 'center', md: 'left' }} ml={{ md: 4 }}>
+            <Text fontSize={{ base: 'lg', md: 'xl' }}>{item.title}</Text>
+            <Text fontSize={{ base: 'md', md: 'lg' }}>${item.price}</Text>
           </Box>
           <Button
             colorScheme="red"
             onClick={() => removeFromCart(item.id)}
+            mt={{ base: 2, md: 0 }}
+            ml={{ base: 0, md: 4 }}
+            size="sm"
           >
             Remove
           </Button>
@@ -97,7 +111,7 @@ const CartPage = () => {
       <Box textAlign="center" mt={8}>
         <Button
           colorScheme="teal"
-          size="lg"
+          size={{ base: 'md', md: 'lg' }}
           onClick={proceedToPayment}
         >
           Proceed to Payment

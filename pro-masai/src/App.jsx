@@ -54,6 +54,7 @@ import Slides from './page/Slides'
 import SlidesSingle from './page/SlidesSingle'
 import Sneakers from './page/Sneakers'
 import SneakersSingle from './page/SneakersSingle'
+import Register from './page/Register'
 
 function App() {
 
@@ -108,6 +109,7 @@ function App() {
       <Route path='/shoes/:Id' element={<ShoesData/>} />
       <Route path='/likenew' element={<LikeNew/>}/>
       <Route path='/signin' element={<SignIn/>} />
+      <Route path="/register" element={<Register />} />
       <Route path="/cart" element={<CartPage />} />
       <Route path="/payment" element={<PaymentPage />} />
     </Routes>

@@ -32,22 +32,51 @@ const DressSingle = () => {
   }
 
   return (
-    <Flex justifyContent="space-evenly" mt={8}>
-      <Box w={400} border="2px solid">
-        <img src={product.img} alt={product.title} />
+    <Flex
+      direction={{ base: 'column', md: 'row' }}
+      justifyContent="center"
+      alignItems="center"
+      mt={8}
+      px={{ base: 4, md: 8 }}
+    >
+      {/* Product Image */}
+      <Box
+        w={{ base: '100%', md: 400 }}
+        border="2px solid"
+        mb={{ base: 6, md: 0 }}
+        textAlign="center"
+      >
+        <img src={product.img} alt={product.title} style={{ width: '100%' }} />
       </Box>
 
-      <Box textAlign="center">
-        <Box mt={8} fontSize={35} fontWeight={500} textAlign="center">
+      {/* Product Details */}
+      <Box textAlign="center" mt={{ base: 6, md: 0 }} ml={{ base: 0, md: 8 }} w="full">
+        <Box
+          mt={8}
+          fontSize={{ base: 'xl', md: '2xl' }}
+          fontWeight={500}
+          textAlign="center"
+          lineHeight="shorter"
+        >
           {product.title}
         </Box>
-        <Flex gap={5} marginLeft={300} mt={8} fontSize={35} fontWeight={500}>
-          <Text color="#c8102e">Price:</Text> ${product.price}
+
+        <Flex
+          justifyContent="center"
+          gap={5}
+          mt={4}
+          fontSize={{ base: 'xl', md: '2xl' }}
+          fontWeight={500}
+        >
+          <Text color="#c8102e">Price:</Text>
+          <Text>${product.price}</Text>
         </Flex>
-        <Box textAlign="center" mt={12}>
+
+        {/* Add to Cart Button */}
+        <Box textAlign="center" mt={6}>
           <Button
             p={2}
-            w={400}
+            w={{ base: '100%', md: 400 }}
             size="lg"
             backgroundColor="#c8102e"
             color="white"
@@ -57,11 +86,15 @@ const DressSingle = () => {
             ADD TO BAG
           </Button>
         </Box>
-       
 
-        <Box marginTop={20}>
-          <Text fontSize={23} fontWeight={500}>Why we make this?</Text>
-          <Text>{product?.description}</Text>
+        {/* Product Description */}
+        <Box marginTop={8}>
+          <Text fontSize={{ base: 'lg', md: '2xl' }} fontWeight={500}>
+            Why we make this?
+          </Text>
+          <Text fontSize={{ base: 'sm', md: 'md' }} mt={4}>
+            {product?.description}
+          </Text>
         </Box>
       </Box>
     </Flex>

@@ -1,23 +1,23 @@
-import { Box, Button, Flex, Grid, GridItem, grid } from '@chakra-ui/react'
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Box, Button, Flex, Grid, GridItem } from '@chakra-ui/react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { womenShorts } from '../Data/womenShorts';
 
 const WomenShorts = () => {
   const [data, setData] = useState(womenShorts);
-    const [isSortedAsc, setIsSortedAsc] = useState(true);
-  
-    const handleSort = () => {
-      const sortedData = [...data].sort((a, b) =>
-        isSortedAsc ? a.price - b.price : b.price - a.price
-      );
-      setData(sortedData);
-      setIsSortedAsc(!isSortedAsc); // Toggle sort order
-    };
+  const [isSortedAsc, setIsSortedAsc] = useState(true);
+
+  const handleSort = () => {
+    const sortedData = [...data].sort((a, b) =>
+      isSortedAsc ? a.price - b.price : b.price - a.price
+    );
+    setData(sortedData);
+    setIsSortedAsc(!isSortedAsc); // Toggle sort order
+  };
 
   return (
     <>
-    <Button
+      <Button
         onClick={handleSort}
         mb={4}
         colorScheme="blue"
@@ -25,28 +25,40 @@ const WomenShorts = () => {
       >
         Sort by Price ({isSortedAsc ? 'Ascending' : 'Descending'})
       </Button>
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)',gap:"10px",marginLeft:"5px" }}>
-      {data.map((item) => (
-        <div>
-          <Box w={350} p={6} bg="#fff" border="1px solid rgba(0, 0, 0, 0.102)" key={item.id}>
-            <Link to={`/womenshorts/${item.id}`}>
-              <Box>
-                <img
-                  style={{ width: '300px', alignItems: 'center' }}
-                  src={item.img}
-                  alt="wome"
-                />
-              </Box>
-              <Flex justifyContent="space-between">
-                <Box fontWeight={600}>{item.title}</Box> <Box>{item.price}$</Box>
-              </Flex>
-            </Link>
-          </Box>
-        </div>
-      ))}
-    </div>
+      <Grid
+        templateColumns={{ base: 'repeat(1, 1fr)', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' }}
+        gap={6}
+        p={5}
+      >
+        {data.map((item) => (
+          <GridItem key={item.id}>
+            <Box
+              w="100%"
+              p={6}
+              bg="#fff"
+              border="1px solid rgba(0, 0, 0, 0.102)"
+              borderRadius="md"
+              boxShadow="sm"
+            >
+              <Link to={`/womenshorts/${item.id}`}>
+                <Box mb={4}>
+                  <img
+                    style={{ width: '100%', objectFit: 'cover' }}
+                    src={item.img}
+                    alt={item.title}
+                  />
+                </Box>
+                <Flex justifyContent="space-between" alignItems="center">
+                  <Box fontWeight={600}>{item.title}</Box>
+                  <Box fontWeight="bold">{item.price}$</Box>
+                </Flex>
+              </Link>
+            </Box>
+          </GridItem>
+        ))}
+      </Grid>
     </>
-  )
-}
+  );
+};
 
-export default WomenShorts
+export default WomenShorts;

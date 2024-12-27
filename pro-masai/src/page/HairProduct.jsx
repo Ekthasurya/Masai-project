@@ -1,8 +1,7 @@
-import { Box, Button, Flex, Grid, GridItem, grid } from '@chakra-ui/react'
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { accessories } from '../Data/accessories'
-import { hair } from '../Data/hair'
+import { Box, Button, Flex, SimpleGrid } from '@chakra-ui/react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { hair } from '../Data/hair';
 
 const HairProduct = () => {
   const [data, setData] = useState(hair);
@@ -15,9 +14,11 @@ const HairProduct = () => {
     setData(sortedData);
     setIsSortedAsc(!isSortedAsc); // Toggle sort order
   };
+
   return (
     <>
-    <Button
+      {/* Sort Button */}
+      <Button
         onClick={handleSort}
         mb={4}
         colorScheme="blue"
@@ -25,29 +26,48 @@ const HairProduct = () => {
       >
         Sort by Price ({isSortedAsc ? 'Ascending' : 'Descending'})
       </Button>
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)',gap:'5px' }} >
-      {data.map((item) => (
-        <div>
-          <Box w={350} p={6} bg="#fff" border="1px solid rgba(0, 0, 0, 0.102)"  key={item.id}>
+
+      {/* Responsive Grid for Hair Products */}
+      <SimpleGrid
+        columns={{ base: 1, sm: 2, md: 3 }} // Define columns for different screen sizes
+        spacing={5}
+        p={5}
+      >
+        {data.map((item) => (
+          <Box
+            key={item.id}
+            bg="white"
+            border="1px solid rgba(0, 0, 0, 0.102)"
+            borderRadius="md"
+            overflow="hidden"
+            shadow="md"
+            p={4}
+          >
             <Link to={`/hair/${item.id}`}>
-              <Box>
+              {/* Product Image */}
+              <Box textAlign="center" mb={3}>
                 <img
-                  style={{ width: '300px', alignItems: 'center' }}
+                  style={{
+                    width: '100%',
+                    maxWidth: '300px',
+                    height: 'auto',
+                    margin: '0 auto',
+                  }}
                   src={item?.img}
-                  alt="men"
-                  
+                  alt={item?.title}
                 />
               </Box>
-              <Flex justifyContent="space-between">
-                <Box fontWeight={600}>{item?.title}</Box> <Box>{item.price}$</Box>
+              {/* Product Details */}
+              <Flex justifyContent="space-between" alignItems="center">
+                <Box fontWeight="600">{item?.title}</Box>
+                <Box>{item.price}$</Box>
               </Flex>
             </Link>
           </Box>
-        </div>
-      ))}
-    </div>
+        ))}
+      </SimpleGrid>
     </>
-  )
-}
+  );
+};
 
-export default HairProduct
+export default HairProduct;
