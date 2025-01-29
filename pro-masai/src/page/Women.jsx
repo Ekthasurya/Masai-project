@@ -60,7 +60,7 @@ const Women = () => {
   <Flex
     justifyContent="end"
     position="absolute"
-    bottom="10%"
+    bottom="3%"
     right="5%"
   >
     <Link to="/women/allwomen">

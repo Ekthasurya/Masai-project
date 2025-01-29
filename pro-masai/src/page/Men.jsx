@@ -41,7 +41,7 @@ const Men = () => {
         </Box>
         <Flex justifyContent="end"
     position="absolute"
-    bottom="10%"
+    bottom="3%"
     right="5%">
           <Link to='/men/allmen'>
             <Button size={{ base: 'md', lg: 'lg' }}
